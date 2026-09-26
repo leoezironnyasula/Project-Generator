@@ -8,7 +8,7 @@ we'll swap the hardcoded list for a call to app/llm/client.py.
 """
 import random
 
-from app.models.project import Project, TechStack, Domain, Difficulty
+from app.models.project import Difficulty, Domain, Project, TechStack
 
 # A small hardcoded pool of sample projects.
 # Each one is a fully-formed Project object using the dataclasses

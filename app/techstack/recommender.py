@@ -10,9 +10,9 @@ internals later won't require touching any callers.
 """
 import random
 
-from app.models.project import Domain, Difficulty, TechStack
-from app.techstack.rules import get_options_for_domain
 from app.core.exceptions import UnsupportedDomainError
+from app.models.project import Difficulty, Domain, TechStack
+from app.techstack.rules import get_options_for_domain
 
 
 def recommend_stack(domain: Domain, difficulty: Difficulty = Difficulty.BEGINNER) -> TechStack:

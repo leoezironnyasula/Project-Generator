@@ -8,7 +8,7 @@ narrow down what gets returned.
 """
 from dataclasses import dataclass
 
-from app.models.project import Domain, Difficulty
+from app.models.project import Difficulty, Domain
 
 
 @dataclass
@@ -28,6 +28,4 @@ class GenerationConstraints:
             return False
         if self.difficulty and project.difficulty != self.difficulty:
             return False
-        if self.language and project.tech_stack.language.lower() != self.language.lower():
-            return False
-        return True
+        return not self.language or project.tech_stack.language.lower() == self.language.lower()

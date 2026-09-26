@@ -8,7 +8,7 @@ folder instead of just an idea on screen.
 """
 from pathlib import Path
 
-from app.models.project import Project, Domain
+from app.models.project import Domain, Project
 
 # Maps each Domain to a basic starter layout.
 # Keys are folder paths (relative to the new project root),

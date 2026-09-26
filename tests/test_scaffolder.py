@@ -3,10 +3,9 @@ tests/test_scaffolder.py
 Basic sanity tests for the scaffolder.
 Run with: pytest
 """
-import shutil
-
 from app.scaffolder.builder import scaffold_project
 from app.generator.idea_generator import generate_random_project
+from app.scaffolder.builder import scaffold_project
 
 
 def test_scaffold_project_creates_folder(tmp_path):

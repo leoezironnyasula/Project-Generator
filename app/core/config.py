@@ -6,8 +6,8 @@ Centralizes anything that might change between environments
 (your machine vs. someone else's, dev vs. "production") so it's
 not hardcoded scattered across the codebase.
 """
-from dataclasses import dataclass
 import os
+from dataclasses import dataclass
 
 
 @dataclass
