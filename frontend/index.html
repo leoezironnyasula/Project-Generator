@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Project Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="window">
+    <div class="titlebar">
+      <span class="dot dot-a"></span>
+      <span class="dot dot-b"></span>
+      <span class="dot dot-c"></span>
+      <span class="titlebar-label">project-generator</span>
+    </div>
+
+    <div class="screen">
+      <p class="line prompt">
+        <span class="sigil">&gt;</span> roll_project()
+      </p>
+
+      <!-- Idle state: shown before anything has been generated -->
+      <p id="idle" class="line idle">
+        Waiting for input<span class="cursor">_</span>
+      </p>
+
+      <!-- Result block: hidden until a project exists -->
+      <div id="result" class="hidden">
+        <p class="line result-title" id="title"></p>
+        <p class="line dim" id="description"></p>
+
+        <p class="line">
+          <span class="key">domain</span> <span id="domain"></span>
+          &nbsp;&nbsp;
+          <span class="key">difficulty</span> <span id="difficulty"></span>
+        </p>
+        <p class="line">
+          <span class="key">stack</span> <span id="stack"></span>
+        </p>
+
+        <p class="line key">features</p>
+        <ul id="features"></ul>
+
+        <p class="line" id="status"></p>
+      </div>
+
+      <!-- Error state -->
+      <p id="error" class="line error hidden"></p>
+    </div>
+
+    <div class="controls">
+      <button id="generate-btn">Roll a new project</button>
+      <button id="scaffold-btn" class="secondary hidden">Create project folder</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
