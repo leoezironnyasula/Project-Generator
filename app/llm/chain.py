@@ -67,6 +67,17 @@ def _build_project_from_data(data: dict) -> Project:
         database=data.get("database"),
     )
 
+    # Basic sanity checks -- the JSON can be technically valid but
+    # still nonsense (empty strings, absurd lengths). This won't catch
+    # every bad case, but it catches the cheap/common ones without
+    # needing a whitelist of "real" languages, which would be fragile.
+    if not tech_stack.language.strip():
+        raise LLMResponseError("LLM returned an empty language field.")
+    if len(data.get("title", "")) > 100:
+        raise LLMResponseError("LLM returned an unreasonably long title -- likely malformed output.")
+    if not data.get("features"):
+        raise LLMResponseError("LLM returned a project with no features.")
+
     try:
         return Project(
             title=data["title"],
