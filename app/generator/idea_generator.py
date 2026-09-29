@@ -72,10 +72,13 @@ def generate_random_project() -> Project:
         try:
             return generate_project_via_llm()
         except (LLMConnectionError, LLMResponseError) as e:
-            # DEBUG: print the real reason instead of silently falling back,
-            # so we can see in the terminal exactly what's going wrong.
-            print(f"[DEBUG] LLM generation failed, falling back to templates: {e}")
+            # DEBUG: write the real reason to a log file (instead of just
+            # printing) so it's easy to check without catching it live
+            # in a scrolling terminal.
+            with open("debug_log.txt", "a", encoding="utf-8") as f:
+                f.write(f"LLM generation failed, falling back to templates: {e}\n")
     else:
-        print("[DEBUG] USE_LLM is not enabled -- using hardcoded templates.")
+        with open("debug_log.txt", "a", encoding="utf-8") as f:
+            f.write("USE_LLM is not enabled -- using hardcoded templates.\n")
 
     return _generate_from_templates()
