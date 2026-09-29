@@ -22,7 +22,7 @@ class Settings:
 
     # Which model to request from the backend.
     # Change this to whatever model you actually have pulled in Ollama.
-    llm_model: str = os.getenv("LLM_MODEL", "llama3")
+    llm_model: str = os.getenv("LLM_MODEL", "llama3.1")
 
     # Where scaffolded projects get written by default.
     default_output_dir: str = os.getenv("OUTPUT_DIR", "./generated_projects")
